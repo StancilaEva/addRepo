@@ -1,0 +1,7 @@
+﻿// See https://aka.ms/new-console-template for more information
+<<<<<<< HEAD
+Console.WriteLine("user2 wrote this");
+=======
+Console.WriteLine("user1 wrote this");
+>>>>>>> 57b94f9d030973c17d49272aa87234edf1907af4
+Console.WriteLine("Hello, World!");
