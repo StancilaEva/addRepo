@@ -8,5 +8,9 @@ namespace ConsoleApp1
 {
     internal class SomeGenericClass
     {
+        SomeGenericClass()
+        {
+            Console.WriteLine("some text");
+        }
     }
 }
