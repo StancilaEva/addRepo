@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 
 namespace LINQApp
 {
@@ -15,8 +16,10 @@ namespace LINQApp
             List<int> indexesInList = findInList.FindInArray("blue").ToList();
  
             indexesInList.ForEach(x => Console.Write($"{x} "));
+            Console.WriteLine("\n======================================CONCATANTE====================================");
             int concatenatedIntegerList = list.Concatenate((currentValue, x) => { return currentValue * x; });
             Console.WriteLine($"\n{concatenatedIntegerList}");
+            
 
             string concatenatedStringList = findInList.Concatenate((currentValue, x) => { return currentValue + x; });
             Console.WriteLine($"\n{concatenatedStringList}");
@@ -182,7 +185,7 @@ namespace LINQApp
                             select gr;
             foreach (var groupJoinValue in groupJoin)
             {
-                Console.WriteLine(groupJoinValue.Count());
+                Console.WriteLine("\n"+groupJoinValue.Count());
                 foreach (var joinValue in groupJoinValue)
                 {
                     Console.Write(joinValue.FacultyName);
@@ -228,8 +231,25 @@ namespace LINQApp
             {
                 Console.WriteLine(zipValue);
             }
-
+            Console.WriteLine("\n=================================Aggregate==========================");
+            string newString = strings.Aggregate((x, y) => { return x +" AND "+ y; });
+            Console.WriteLine(newString);
+            Console.WriteLine("\n=================================Cast==========================");
+            ArrayList arrList = new ArrayList { 4, 3, 5 };
+            IEnumerable<int> newStrings = arrList.Cast<int>();
+            foreach(int str in newStrings)
+            {
+                Console.Write($"{str} ");
+            }
+            Console.WriteLine("\n=================================OfType==========================");
+            ArrayList arrlist = new ArrayList() { 1, 2, "fakjfae", "fea", 4, "feafe", 5.6 };
+            var newArrList = arrlist.OfType<string>();
+            foreach(string str in newArrList){
+                Console.Write($"{str} ");
+            }
+            
         }
+
 
     }
     public static class MultiplyExtensions
@@ -255,7 +275,6 @@ namespace LINQApp
                 concatValue = predicate(concatValue, enumerator.Current);
             }
             return concatValue;
-
         }
 
     }
